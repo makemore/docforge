@@ -1,0 +1,60 @@
+{
+  "name": "docforge-cli",
+  "version": "1.1.0",
+  "description": "🔥 Forge beautiful PDFs from Markdown and HTML - perfect for LLM-generated documents, presentations, and reports",
+  "main": "src/index.js",
+  "bin": {
+    "docforge": "./bin/docforge.js",
+    "df": "./bin/docforge.js"
+  },
+  "scripts": {
+    "test": "node bin/docforge.js --help",
+    "prepublishOnly": "node -e \"require('./src/index.js')\" && node bin/docforge.js --version"
+  },
+  "keywords": [
+    "pdf",
+    "markdown",
+    "html",
+    "converter",
+    "document",
+    "presentation",
+    "llm",
+    "ai",
+    "cli",
+    "md-to-pdf",
+    "html-to-pdf",
+    "report",
+    "resume",
+    "invoice"
+  ],
+  "author": "Make More Digital",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "cosmiconfig": "^9.0.0",
+    "glob": "^13.0.0",
+    "md-to-pdf": "^5.2.5",
+    "ora": "^5.4.1",
+    "puppeteer": "^23.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makemoredigital/docforge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/makemoredigital/docforge/issues"
+  },
+  "homepage": "https://github.com/makemoredigital/docforge#readme",
+  "files": [
+    "bin",
+    "src",
+    "styles",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}

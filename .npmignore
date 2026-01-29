@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+__tests__/
+coverage/
+
+# Development files
+.git/
+.gitignore
+.editorconfig
+.eslintrc*
+.prettierrc*
+.vscode/
+.idea/
+
+# Build artifacts
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Documentation source (keep README)
+docs/
+*.md
+!README.md
+!CHANGELOG.md
+
+# Example files
+examples/
+*.example.*
+
+# Config files not needed in package
+.travis.yml
+.github/
+Makefile
+docker-compose.yml
+Dockerfile
+

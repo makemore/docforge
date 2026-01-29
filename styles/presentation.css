@@ -1,0 +1,172 @@
+/* DocForge - Presentation Style */
+/* Slide-like layout for presentations and decks */
+
+:root {
+  --accent: #6366f1;
+  --accent-dark: #4f46e5;
+  --text-primary: #1e1b4b;
+  --text-secondary: #4338ca;
+  --text-light: #6b7280;
+  --bg-gradient-start: #f8fafc;
+  --bg-gradient-end: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 50px;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid var(--accent);
+}
+
+h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 1.5em;
+}
+
+p {
+  font-size: 1.1em;
+  margin: 1.2em 0;
+  color: var(--text-light);
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+ul, ol {
+  margin: 1.5em 0;
+  padding-left: 1.5em;
+}
+
+li {
+  font-size: 1.1em;
+  margin: 0.8em 0;
+  color: var(--text-light);
+}
+
+li::marker {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+blockquote {
+  background: white;
+  border-left: 5px solid var(--accent);
+  margin: 2em 0;
+  padding: 1.5em 2em;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-size: 1.2em;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+code {
+  background: white;
+  color: var(--accent-dark);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'SF Mono', monospace;
+  font-size: 0.9em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+pre {
+  background: var(--text-primary);
+  color: #e2e8f0;
+  padding: 24px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2em 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  box-shadow: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+th {
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  color: var(--text-light);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin: 3em 0;
+  border-radius: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+

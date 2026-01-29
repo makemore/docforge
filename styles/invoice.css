@@ -1,0 +1,174 @@
+/* DocForge - Invoice Style */
+/* Clean invoice and billing document style */
+
+:root {
+  --accent: #111827;
+  --accent-light: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --success: #059669;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1.5em;
+}
+
+p {
+  margin: 0.5em 0;
+  color: var(--text-secondary);
+}
+
+strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+
+th {
+  background-color: var(--accent);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Amount column alignment */
+th:last-child,
+td:last-child {
+  text-align: right;
+}
+
+/* Totals section */
+tfoot td {
+  font-weight: 600;
+  border-top: 2px solid var(--border);
+}
+
+tfoot tr:last-child td {
+  font-size: 1.2em;
+  color: var(--text-primary);
+  background-color: var(--accent-light);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+/* Two column layout helper */
+.two-column {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.two-column > div {
+  flex: 1;
+}
+
+/* Label styling */
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* Payment details box */
+.payment-details {
+  background-color: var(--accent-light);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 2em;
+}
+
+/* Footer */
+.footer {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Status badges */
+.status-paid {
+  display: inline-block;
+  background-color: var(--success);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  display: inline-block;
+  background-color: #f59e0b;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+

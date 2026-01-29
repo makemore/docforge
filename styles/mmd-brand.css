@@ -1,0 +1,264 @@
+/* Make More Digital Brand Theme for Markdown */
+
+:root {
+  /* Brand Colors */
+  --brand-red: #ff625a;
+  --brand-red-dark: rgb(220, 62, 62);
+  --brand-red-light: rgba(255, 98, 90, 0.1);
+
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-code: #f3f4f6;
+  --bg-dark: #111827;
+
+  /* Text Colors */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-heading: #111827;
+  --text-link: #ff625a;
+  --text-strong: #111827;
+  --text-code: #dc2626;
+
+  /* Borders */
+  --border-color: #e5e7eb;
+  --border-light: #f3f4f6;
+
+  /* Table */
+  --table-header-bg: #f9fafb;
+  --table-row-alt: #fafafa;
+
+  /* Status */
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* Header/Logo area */
+body::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-red), var(--brand-red-dark));
+  margin-bottom: 40px;
+  border-radius: 2px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-heading);
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.25em;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--brand-red);
+  margin-top: 16px;
+  border-radius: 2px;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: var(--text-heading);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+  color: var(--text-primary);
+}
+
+h4 {
+  font-size: 1.05em;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+  margin: 1em 0;
+  color: var(--text-secondary);
+}
+
+/* Links */
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Strong and emphasis */
+strong, b {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Code blocks */
+pre {
+  background-color: var(--bg-code);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+/* Inline code */
+code {
+  background-color: var(--brand-red-light);
+  color: var(--text-code);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875em;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--brand-red);
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-radius: 0 8px 8px 0;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* Lists */
+ul, ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+  color: var(--text-secondary);
+}
+
+li {
+  margin: 0.5em 0;
+  padding-left: 0.5em;
+}
+
+li::marker {
+  color: var(--brand-red);
+}
+
+/* Task lists */
+input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: var(--brand-red);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 13px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--table-header-bg);
+  color: var(--text-heading);
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-row-alt);
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 3em 0;
+}
+
+/* Document footer styling */
+body::after {
+  content: 'Make More Digital';
+  display: block;
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Special styling for document metadata */
+p:first-of-type {
+  font-size: 1.1em;
+  color: var(--text-secondary);
+}
+
+/* Emphasis on key terms */
+strong:first-child {
+  color: var(--brand-red);
+}
+
