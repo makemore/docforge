@@ -1,6 +1,6 @@
 {
   "name": "docforge-cli",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "🔥 Forge beautiful PDFs from Markdown and HTML - perfect for LLM-generated documents, presentations, and reports",
   "main": "src/index.js",
   "bin": {
@@ -8,7 +8,8 @@
     "df": "./bin/docforge.js"
   },
   "scripts": {
-    "test": "node bin/docforge.js --help",
+    "test": "jest",
+    "test:help": "node bin/docforge.js --help",
     "prepublishOnly": "node -e \"require('./src/index.js')\" && node bin/docforge.js --version"
   },
   "keywords": [
@@ -37,6 +38,9 @@
     "md-to-pdf": "^5.2.5",
     "ora": "^5.4.1",
     "puppeteer": "^23.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   },
   "engines": {
     "node": ">=18.0.0"

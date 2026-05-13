@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-05-13
+
+### Added
+- **Page break support**: Use `\newpage` or `\pagebreak` on its own line to force a page break in markdown documents
+  - Works with both `docforge md` and `docforge merge` commands
+  - Compatible with Pandoc's page break syntax
+- **Auto page breaks in merge**: Page breaks are now automatically inserted between merged files (default behaviour)
+  - Use `--no-auto-page-break` flag to disable automatic page breaks between files
+- Added test infrastructure with Jest
+- Added `src/preprocess.js` module for markdown transformations
+
+### Changed
+- Markdown conversion now uses content-based rendering with basedir for proper relative path resolution
+
 ## [1.1.0] - 2026-01-29
 
 ### Added

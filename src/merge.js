@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const ora = require('ora');
 const { resolveStylesheet } = require('./styles');
 const glob = require('glob');
+const { applyPageBreaks, PAGE_BREAK_CSS } = require('./preprocess');
 
 /**
  * Merge multiple markdown files into a single PDF
@@ -46,36 +47,43 @@ async function mergeMarkdownFiles(patterns, options = {}) {
     // Read and combine all markdown content
     let combinedContent = '';
     const tocEntries = [];
-    
+
+    // Determine whether to auto-insert page breaks between files
+    // Default to true (insert breaks), disable with --no-auto-page-break
+    const autoPageBreak = options.autoPageBreak !== false;
+
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      const content = fs.readFileSync(file, 'utf8');
-      
+      const rawContent = fs.readFileSync(file, 'utf8');
+
+      // Apply page break transformations (\newpage, \pagebreak)
+      const content = applyPageBreaks(rawContent);
+
       // Extract first heading for TOC
-      const headingMatch = content.match(/^#\s+(.+)$/m);
+      const headingMatch = rawContent.match(/^#\s+(.+)$/m);
       const title = headingMatch ? headingMatch[1] : path.basename(file, '.md');
       const anchor = `file-${i}`;
-      
+
       tocEntries.push({ title, anchor, file });
-      
+
       // Add page break between files (except before first)
-      if (i > 0) {
-        combinedContent += '\n\n<div style="page-break-before: always;"></div>\n\n';
+      if (i > 0 && autoPageBreak) {
+        combinedContent += '\n\n<div class="page-break"></div>\n\n';
       }
-      
+
       // Add anchor for TOC linking
       combinedContent += `<a id="${anchor}"></a>\n\n`;
       combinedContent += content;
       combinedContent += '\n\n';
     }
-    
+
     // Generate TOC if requested
     if (options.toc) {
       let tocContent = '# Table of Contents\n\n';
       tocEntries.forEach((entry, index) => {
         tocContent += `${index + 1}. [${entry.title}](#${entry.anchor})\n`;
       });
-      tocContent += '\n<div style="page-break-before: always;"></div>\n\n';
+      tocContent += '\n<div class="page-break"></div>\n\n';
       combinedContent = tocContent + combinedContent;
     }
     
@@ -154,18 +162,20 @@ async function mergeMarkdownFiles(patterns, options = {}) {
 function buildMergeCss(options) {
   return `
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
+
     @page {
       margin: 25mm 20mm;
       size: ${options.format || 'A4'}${options.landscape ? ' landscape' : ''};
     }
-    
+
     @media print {
       body {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
     }
+
+    ${PAGE_BREAK_CSS}
   `;
 }
 

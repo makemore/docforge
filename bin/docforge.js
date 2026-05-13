@@ -207,6 +207,7 @@ program
   .option('--sort', 'Sort files alphabetically')
   .option('--format <size>', 'Page format (A4, Letter, etc.)', 'A4')
   .option('--landscape', 'Use landscape orientation')
+  .option('--no-auto-page-break', 'Disable automatic page breaks between merged files')
   .action(async (files, options) => {
     console.log(banner);
     const config = await loadConfig();

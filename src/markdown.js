@@ -4,6 +4,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 const ora = require('ora');
 const { resolveStylesheet } = require('./styles');
+const { applyPageBreaks, PAGE_BREAK_CSS } = require('./preprocess');
 
 async function convertMarkdown(input, options = {}) {
   const spinner = ora(`Converting ${input}`).start();
@@ -70,7 +71,14 @@ async function convertMarkdown(input, options = {}) {
       pdfOptions.css += '\n' + options.customCss;
     }
     
-    const pdf = await mdToPdf({ path: inputPath }, pdfOptions);
+    // Read and preprocess markdown content for page breaks
+    const rawContent = fs.readFileSync(inputPath, 'utf8');
+    const transformedContent = applyPageBreaks(rawContent);
+
+    const pdf = await mdToPdf(
+      { content: transformedContent, basedir: path.dirname(inputPath) },
+      pdfOptions
+    );
     
     if (pdf) {
       fs.writeFileSync(outputPath, pdf.content);
@@ -90,11 +98,11 @@ async function convertMarkdown(input, options = {}) {
 function buildPrintCss(options) {
   return `
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
+
     @page {
       margin: 25mm 20mm;
       size: ${options.format || 'A4'}${options.landscape ? ' landscape' : ''};
-      
+
       @bottom-center {
         content: counter(page);
         font-family: 'Inter', sans-serif;
@@ -102,27 +110,29 @@ function buildPrintCss(options) {
         color: #6b7280;
       }
     }
-    
+
     @page :first {
       @bottom-center {
         content: none;
       }
     }
-    
+
     @media print {
       body {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      
+
       h1, h2, h3 {
         page-break-after: avoid;
       }
-      
+
       table, pre, blockquote {
         page-break-inside: avoid;
       }
     }
+
+    ${PAGE_BREAK_CSS}
   `;
 }
 

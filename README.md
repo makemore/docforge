@@ -95,6 +95,28 @@ docforge batch "*.md" -o ./pdfs
 docforge batch "docs/*.html" -t html
 ```
 
+## Markdown Features
+
+### Page Breaks
+
+DocForge supports Pandoc-style page breaks in your markdown files. Use `\newpage` or `\pagebreak` on its own line to force a page break:
+
+```markdown
+# Chapter 1
+
+Content of chapter 1...
+
+\newpage
+
+# Chapter 2
+
+Content of chapter 2 starts on a new page.
+```
+
+Both `\newpage` and `\pagebreak` work identically. This ensures compatibility with documents that also need to render through Pandoc.
+
+When merging multiple files with `docforge merge`, page breaks are automatically inserted between files by default. Use `--no-auto-page-break` to disable this behaviour.
+
 ## Built-in Styles
 
 | Style | Description |
