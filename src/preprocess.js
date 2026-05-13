@@ -36,7 +36,8 @@ const PAGE_BREAK_HTML = '\n\n<div class="page-break"></div>\n\n';
  */
 function applyPageBreaks(content) {
   if (!content) return content;
-  return content.replace(PAGE_BREAK_REGEX, PAGE_BREAK_HTML.trim());
+  // Keep the surrounding blank lines so markdown parser treats the div as a block element
+  return content.replace(PAGE_BREAK_REGEX, PAGE_BREAK_HTML);
 }
 
 /**
